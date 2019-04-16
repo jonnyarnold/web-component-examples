@@ -1,0 +1,21 @@
+{
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "postinstall": "npx @pika/web --dest public/web_modules",
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "lit-html": "^1.0.0"
+  },
+  "@pika/web": {
+    "webDependencies": [
+      "lit-html"
+    ]
+  },
+  "devDependencies": {
+    "@pika/web": "^0.4.1",
+    "nodemon": "^1.18.11"
+  }
+}

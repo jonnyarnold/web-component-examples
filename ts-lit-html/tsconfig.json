@@ -1,0 +1,32 @@
+{
+  "extends": "@trussle/typescript",
+
+  "compilerOptions": {
+
+    // Build to directory.
+    "outDir": "build",
+    "declarationDir": "types",
+
+    // Custom Elements requires real ES6 classes.
+    "target": "es6",
+
+    // <script type="module"> requires real ES6 modules.
+    "module": "es6",
+
+    // The emitted JS will use the path in the TS file,
+    // but web_modules doesn't include types.
+    //
+    // To fix this, we alias web_modules to node_modules.
+    //
+    // ⚠️ Note that this makes the use of any node_module
+    // type-safe, even if they are not exported to web_modules.
+    "baseUrl": ".",
+    "paths": {
+      "/web_modules/*": ["./node_modules/*"]
+    }
+  },
+
+  "files": [
+    "src/index.ts"
+  ]
+}
