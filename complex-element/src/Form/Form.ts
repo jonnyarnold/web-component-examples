@@ -1,5 +1,11 @@
-import { customElement, html, LitElement, property } from "/web_modules/lit-element";
+import {
+  customElement,
+  html,
+  LitElement,
+  property
+} from "/web_modules/lit-element";
 import { unsafeHTML } from "/web_modules/lit-html/directives/unsafe-html";
+
 import { TrussleFormElement } from "./Input/FormElement";
 
 // <t-form> wraps a <form> in a friendly wrapper.
@@ -48,14 +54,31 @@ export class TrussleForm extends LitElement {
   }
 
   get data() {
-    return this.attachedInputs.reduce((memo, input) => {
-      memo[input.name] = input.value;
-      return memo;
-    }, {} as { [name: string]: any });
+    return this.attachedInputs.reduce(
+      (memo, input) => {
+        memo[input.name] = input.value;
+        return memo;
+      },
+      {} as { [name: string]: any }
+    );
+  }
+
+  get form() {
+    const form = this.querySelector("form");
+    if (!form) {
+      throw new Error("Form does not exist!");
+    }
+
+    return form;
   }
 
   onSubmit(e: Event) {
     e.preventDefault();
+
+    if (!this.form.reportValidity()) {
+      return;
+    }
+
     return this.submit(this.data);
   }
 }

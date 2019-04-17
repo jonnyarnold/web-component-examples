@@ -4,7 +4,7 @@ import { customElement, html, TrussleFormElement } from "./FormElement";
 export class TrussleDateInput extends TrussleFormElement<Date> {
   renderInput() {
     return html`
-      <input type="date" name="${this.name}" />
+      <input type="date" />
     `;
   }
 

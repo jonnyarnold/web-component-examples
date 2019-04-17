@@ -4,7 +4,7 @@ import { customElement, html, TrussleFormElement } from "./FormElement";
 export class TrussleNumberInput extends TrussleFormElement<Number> {
   renderInput() {
     return html`
-      <input type="number" name="${this.name}" />
+      <input type="number" />
     `;
   }
 

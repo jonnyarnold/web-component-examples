@@ -13,7 +13,6 @@ import { TrussleForm } from "../Form";
 // TrussleInput is an abstract base class
 // that all other form elements are based on
 export abstract class TrussleFormElement<TValue = any> extends LitElement {
-
   @property() name: string = "";
 
   private content: string;
@@ -33,6 +32,19 @@ export abstract class TrussleFormElement<TValue = any> extends LitElement {
 
     if (!this.name) {
       throw new Error("No name specified for TrussleFormElement");
+    }
+  }
+
+  firstUpdated() {
+    // Push all attributes from the FormElement
+    // onto the <input>.
+    const input = this.input;
+    for (const attribute of this.attributes) {
+      input.setAttribute(attribute.name, attribute.value);
+
+      if (attribute.name === "name") {
+        input.setAttribute("id", attribute.value);
+      }
     }
   }
 

@@ -1,10 +1,10 @@
 import { customElement, html, TrussleFormElement } from "./FormElement";
 
-@customElement("t-text")
-export class TrussleTextInput extends TrussleFormElement<string> {
+@customElement("t-email")
+export class TrussleEmailInput extends TrussleFormElement<string> {
   renderInput() {
     return html`
-      <input type="text" />
+      <input type="email" />
     `;
   }
 

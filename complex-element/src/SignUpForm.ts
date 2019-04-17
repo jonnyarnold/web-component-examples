@@ -8,6 +8,8 @@ import {
 export class SignUpForm extends LitElement {
 
   render() {
+    const nowDate = new Date().toISOString().split("T")[0];
+
     return html`
       <style>
         trussle-form {
@@ -17,9 +19,9 @@ export class SignUpForm extends LitElement {
       </style>
 
       <t-form .submit="${this.onSubmit}">
-        <t-text name="firstName">What is your first name?</t-text>
-        <t-text name="surname">What is your surname?</t-text>
-        <t-date name="dob">When were you born?</t-date>
+        <t-text name="name" required>What is your name?</t-text>
+        <t-email name="email" required>What is your email address?</t-email>
+        <t-date name="dob" max="${nowDate}">When were you born?</t-date>
         <t-number name="favouriteNumber">What is your favourite number?</t-number>
       </t-form>
     `;
